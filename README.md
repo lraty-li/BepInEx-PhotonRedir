@@ -3,7 +3,8 @@
 ## **Installation**
 1. Download the latest release from [Releases](https://github.com/awc21/BepInEx-PhotonRedir/releases/latest).
 2. Place the downloaded **DLL** into the `BepInEx/plugins` folder.
-3. Open `BepInEx/config/photon-redirect.cfg` and set your **PhotonAppId**.
+3. Run the game once, in order to generate `photon-redirect.cfg`
+4. Open `BepInEx/config/photon-redirect.cfg` and set your **PhotonAppId**.
 
 ## **Getting Photon AppID**
 1. Go to [Photon Engine](https://www.photonengine.com/).

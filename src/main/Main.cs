@@ -46,7 +46,7 @@ namespace PhotonAppIDRedirector
 
             if (authValues != null)
             {
-                authValues.AuthType = (CustomAuthenticationType)byte.MaxValue;
+                authValues.AuthType = CustomAuthenticationType.None;
             }
         }
     }
