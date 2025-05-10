@@ -2,4 +2,4 @@ src/main/obj/
 src/main/out/
 src/main/bin/
 src/main/.vs/
-REPO_Data/Managed/Photon3Unity3D.dll
+REPO_Data/Managed/*.dll

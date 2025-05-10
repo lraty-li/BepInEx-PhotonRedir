@@ -1,0 +1,6 @@
+R.E.P.O\REPO_Data\Managed
+
+REPO_Data/Managed/Photon3Unity3D.dll
+REPO_Data/Managed/PhotonRealtime.dll
+REPO_Data/Managed/UnityEngine.dll
+REPO_Data/Managed/UnityEngine.CoreModule.dll
