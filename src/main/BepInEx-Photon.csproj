@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk" >
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFramework>netstandard2.1</TargetFramework>
@@ -9,6 +9,9 @@
     </Reference>
     <Reference Include="0Harmony">
       <HintPath>..\core\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="Photon3Unity3D">
+      <HintPath>..\..\REPO_Data\Managed\Photon3Unity3D.dll</HintPath>
     </Reference>
         <Reference Include="PhotonRealtime">
       <HintPath>..\..\REPO_Data\Managed\PhotonRealtime.dll</HintPath>

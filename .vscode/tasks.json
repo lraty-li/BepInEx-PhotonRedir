@@ -1,0 +1,47 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build Photon Plugin",
+      "type": "shell",
+      "command": "dotnet build -c Release -o out",
+      "options": {
+        "cwd": "${workspaceFolder}/src/main"
+      },
+      "problemMatcher": [
+        "$msCompile"
+      ],
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared",
+        "clear": false
+      }
+    },
+    {
+      "label": "Deploy Photon Plugin",
+      "type": "shell",
+      "command": "Move-Item -Path '${workspaceFolder}/src/main/out/BepInEx-Photon.dll' -Destination 'D:/downloads/R.E.P.O v0.1.2/R.E.P.O/BepInEx/plugins/BepInEx-Photon.dll' -Force",
+      "dependsOn": ["Build Photon Plugin"],
+      "problemMatcher": [], 
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared",
+        "clear": false
+      }
+    },
+    {
+      "label": "Build and Deploy Photon Plugin",
+      "dependsOn": ["Deploy Photon Plugin"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [], 
+      "presentation": {
+        "reveal": "always",
+        "panel": "new", 
+        "echo": true 
+      }
+    }
+  ]
+} 
