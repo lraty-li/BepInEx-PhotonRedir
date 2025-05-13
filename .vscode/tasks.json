@@ -18,11 +18,32 @@
       }
     },
     {
-      "label": "Deploy Photon Plugin",
+      "label": "Stop REPO",
       "type": "shell",
-      "command": "Move-Item -Path '${workspaceFolder}/src/main/out/BepInEx-Photon.dll' -Destination 'D:/downloads/R.E.P.O v0.1.2/R.E.P.O/BepInEx/plugins/BepInEx-Photon.dll' -Force",
-      "dependsOn": ["Build Photon Plugin"],
-      "problemMatcher": [], 
+      "command": "if (Get-Process -Name REPO -ErrorAction SilentlyContinue) { Stop-Process -Name REPO -Force }",
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared",
+        "clear": false
+      }
+    },
+    {
+      "label": "Move Photon Plugin",
+      "type": "shell",
+      "command": "Remove-Item 'D:/downloads/R.E.P.O v0.1.2/R.E.P.O/BepInEx/plugins/BepInEx-Photon.dll' -Force -ErrorAction SilentlyContinue; Move-Item -Path '${workspaceFolder}/src/main/out/BepInEx-Photon.dll' -Destination 'D:/downloads/R.E.P.O v0.1.2/R.E.P.O/BepInEx/plugins/BepInEx-Photon.dll' -Force",
+      "dependsOn": ["Build Photon Plugin", "Stop REPO"],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared",
+        "clear": false
+      }
+    },
+    {
+      "label": "Start REPO",
+      "type": "shell",
+      "command": "Start-Process 'D:/downloads/R.E.P.O v0.1.2/R.E.P.O/REPO.exe'",
+      "dependsOn": ["Move Photon Plugin"],
       "presentation": {
         "reveal": "silent",
         "panel": "shared",
@@ -31,17 +52,53 @@
     },
     {
       "label": "Build and Deploy Photon Plugin",
-      "dependsOn": ["Deploy Photon Plugin"],
+      "dependsOn": ["Start REPO"],
       "group": {
         "kind": "build",
         "isDefault": true
       },
-      "problemMatcher": [], 
+      "problemMatcher": [],
       "presentation": {
         "reveal": "always",
-        "panel": "new", 
-        "echo": true 
+        "panel": "new",
+        "echo": true
       }
+    },
+    {
+        "label": "build",
+        "command": "dotnet",
+        "type": "process",
+        "args": [
+            "build",
+            "${workspaceFolder}/src/main/BepInEx-Photon.csproj",
+            "/property:GenerateFullPaths=true",
+            "/consoleloggerparameters:NoSummary;ForceNoAlign"
+        ],
+        "problemMatcher": "$msCompile"
+    },
+    {
+        "label": "publish",
+        "command": "dotnet",
+        "type": "process",
+        "args": [
+            "publish",
+            "${workspaceFolder}/src/main/BepInEx-Photon.csproj",
+            "/property:GenerateFullPaths=true",
+            "/consoleloggerparameters:NoSummary;ForceNoAlign"
+        ],
+        "problemMatcher": "$msCompile"
+    },
+    {
+        "label": "watch",
+        "command": "dotnet",
+        "type": "process",
+        "args": [
+            "watch",
+            "run",
+            "--project",
+            "${workspaceFolder}/src/main/BepInEx-Photon.csproj"
+        ],
+        "problemMatcher": "$msCompile"
     }
   ]
 } 
